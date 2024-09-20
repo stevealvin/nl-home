@@ -7,7 +7,7 @@ import {
   PlayCircleIcon,
   WrenchScrewdriverIcon
 } from '@heroicons/vue/24/outline'
-import { site, website } from '@/db/data/site'
+import { website } from '@/db/data/site'
 
 const menus = [
   {
@@ -54,7 +54,7 @@ function handleGoto(url: string) {
             <div class="flex items-center gap-3 shadow-sm rounded bg-white p-2 cursor-pointer" @click="handleGoto(item.url)">
               <div class="shrink-0">
                 <img
-                  :src="item.icon.startsWith('http') ? item.icon : `http://n.huasen.cc/${item.icon}`"
+                  :src="item.icon"
                   class="rounded w-9 h-9"
                 />
               </div>
