@@ -10,11 +10,11 @@ export function createLocalStorage(options?: { expire: number | null }) {
     }
 
     const json = JSON.stringify(storageData)
-    localStorage.setItem(key, json)
+    window?.localStorage.setItem(key, json)
   }
 
   function get(key: string) {
-    const json = localStorage.getItem(key)
+    const json = window?.localStorage.getItem(key)
     if (json) {
       let storageData = null
 
@@ -37,11 +37,11 @@ export function createLocalStorage(options?: { expire: number | null }) {
   }
 
   function remove(key: string) {
-    localStorage.removeItem(key)
+    window?.localStorage.removeItem(key)
   }
 
   function clear() {
-    localStorage.clear()
+    window?.localStorage.clear()
   }
 
   return { set, get, remove, clear }
