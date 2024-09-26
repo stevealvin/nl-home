@@ -54,7 +54,7 @@ onMounted(() => {
 <template>
   <div class="max-w-6xl mx-auto p-8">
     <div class="flex gap-8">
-      <div class="flex-1">
+      <div class="flex-[2]">
         <div>
           <div class="text-xl mb-4">查看</div>
             <div class="flex gap-2">
@@ -86,7 +86,7 @@ onMounted(() => {
         </div>
         
       </div>
-      <div class="w-40 flex flex-col justify-center items-start">
+      <div class="flex-[1] flex flex-col justify-center items-start">
         <div v-if="codeText">
           <div>
             <div class="my-3 text-base">分享链接</div>
