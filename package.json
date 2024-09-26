@@ -17,13 +17,14 @@
   },
   "dependencies": {
     "@nuxt/content": "^2.13.2",
+    "@nuxt/ui": "^2.18.6",
     "@vueuse/core": "^11.1.0",
     "@vueuse/integrations": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",
-    "@nuxt/ui": "^2.18.6",
     "keyv": "^5.0.1",
     "nuxt": "^3.13.0",
     "pinia": "^2.2.2",
+    "qrcode": "^1.5.4",
     "vue": "latest",
     "vue-router": "latest"
   }
