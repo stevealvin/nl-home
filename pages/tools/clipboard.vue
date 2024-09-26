@@ -53,7 +53,7 @@ onMounted(() => {
 
 <template>
   <div class="max-w-6xl mx-auto p-8">
-    <div class="flex gap-8">
+    <div class="lg:flex gap-8">
       <div class="flex-[2]">
         <div>
           <div class="text-xl mb-4">查看</div>

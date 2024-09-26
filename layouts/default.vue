@@ -28,8 +28,8 @@ const navigation = [
 
 <template>
   <div class="flex flex-col h-screen">
-    <nav as="nav">
-      <div class="mx-auto">
+    <nav>
+      <div class="max-w-7xl mx-auto">
         <div class="flex h-16 items-center justify-between">
           <div class="flex-shrink-0 flex gap-2">
             <img class="h-8 w-8" src="/icon.png" />
@@ -50,7 +50,7 @@ const navigation = [
             </div>
           </div>
           <div class="hidden md:block">
-            <div>
+            <div class="w-20">
               <UButton
                 :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
                 color="gray"
