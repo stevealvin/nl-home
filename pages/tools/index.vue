@@ -1,9 +1,4 @@
 <script setup>
-import {
-  NButton,
-  NSpace,
-  NMenu
-} from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import { h } from 'vue'
 

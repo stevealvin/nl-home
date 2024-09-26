@@ -2,9 +2,9 @@
   <main class="max-w-7xl mx-auto p-8">
     <div class="grid grid-cols-4 gap-3">
       <template v-for="item in tools">
-        <div class="p-3 cursor-pointer hover:bg-gray-100 rounded-md transition-colors duration-300" @click="goto(item.path)">
+        <div class="p-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-[#18181c] rounded-md transition-colors duration-300" @click="goto(item.path)">
           <div class="flex items-center gap-2">
-            <CubeIcon class="w-10 h-10 text-blue-500" />
+            <UIcon name="i-carbon-apps" class="text-blue-500 h-8 w-8" />
             <div class="text-base font-semibold">{{ item.name }}</div>
           </div>
           <div class="mt-2 text-sm text-gray-500">{{ item.desc }}</div>
@@ -15,14 +15,6 @@
 </template>
 
 <script setup>
-import {
-  CubeIcon,
-} from '@heroicons/vue/24/outline'
-import {
-  NGi,
-  NGrid
-} from 'naive-ui'
-
 const router = useRouter()
 
 const tools = [

@@ -1,30 +1,22 @@
 <script setup lang="ts">
-import {
-  FireIcon,
-  Bars3Icon,
-  PhotoIcon,
-  TagIcon,
-  PlayCircleIcon,
-  WrenchScrewdriverIcon
-} from '@heroicons/vue/24/outline'
 import { website } from '@/db/data/site'
 
 const menus = [
   {
     name: '推荐',
-    icon: FireIcon
+    // icon: FireIcon
   },
   {
     name: '实用·工具',
-    icon: WrenchScrewdriverIcon
+    // icon: WrenchScrewdriverIcon
   },
   {
     name: '壁纸·图标',
-    icon: PhotoIcon
+    // icon: PhotoIcon
   },
   {
     name: '影视',
-    icon: PlayCircleIcon
+    // icon: PlayCircleIcon
   },
 ]
 
@@ -38,7 +30,7 @@ function handleGoto(url: string) {
     <div class="h-full w-60 p-4 overflow-auto">
       <template v-for="item in website">
         <a :href="`#${item.name}`" class="p-2 flex gap-3 items-center cursor-pointer hover:bg-[#e7e7e7] transition-all rounded">
-          <component :is="FireIcon" class="w-5 h-5" />
+          <!-- <component :is="FireIcon" class="w-5 h-5" /> -->
           <div>{{ item.name }}</div>
         </a>
       </template>
