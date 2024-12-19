@@ -5,12 +5,12 @@ import { h } from 'vue'
 </script>
 
 <template>
-  <n-space>
+  <div>
     <div class="w-52">
       
     </div>
     <div>
       <NuxtPage />
     </div>
-  </n-space>
+  </div>
 </template>
