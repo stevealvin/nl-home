@@ -10,7 +10,13 @@ module.exports = {
     "./app.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        'body': 'var(--body-bg)',
+        'container': 'var(--container-bg)',
+        'hover': 'var(--hover-bg)'
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/typography')

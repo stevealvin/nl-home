@@ -1,5 +1,5 @@
 <template>
-  <div class="dark:bg-[#101014] bg-[#f6f6f6] dark:text-white">
+  <div class="bg-body dark:text-white">
     <!-- <NuxtRouteAnnouncer /> -->
       <!-- <NuxtPage /> -->
       <NuxtLayout />

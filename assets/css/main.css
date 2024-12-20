@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 默认情况下，使用 Light 主题的颜色 */
+:root {
+  --body-bg: #f6f6f6;
+  --container-bg: white;
+  --hover-bg: rgba(0, 0, 0, 0.06);
+}
+
+/* 如果用户启用 Dark 主题，则覆盖这些变量 */
+html.dark {
+  --body-bg: #101014;
+  --container-bg: rgba(225, 235, 255, 0.07);
+  --hover-bg: rgba(255, 255, 255, 0.07);
+}
+
 /* 设置滚动条的宽度和背景颜色 */
 ::-webkit-scrollbar {
   background-color: transparent;
