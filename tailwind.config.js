@@ -16,6 +16,9 @@ module.exports = {
         'container': 'var(--container-bg)',
         'hover': 'var(--hover-bg)'
       },
+      textColor: {
+        'text': 'var(--text-color)'
+      }
     },
   },
   plugins: [
