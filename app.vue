@@ -1,8 +1,9 @@
 <template>
-  <div class="bg-body dark:text-white">
-    <!-- <NuxtRouteAnnouncer /> -->
-      <!-- <NuxtPage /> -->
-      <NuxtLayout />
-    <UNotifications />
-  </div>
+  <UApp>
+    <div class="app-ui">
+      <NuxtRouteAnnouncer />
+        <!-- <NuxtPage /> -->
+        <NuxtLayout />
+    </div>
+  </UApp>
 </template>

@@ -1,6 +1,8 @@
+import tailwindcss from "@tailwindcss/vite"
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: '2024-11-01',
   app: {
     head: {
       title: 'NL Home',
@@ -11,18 +13,27 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     '@nuxt/ui',
+    '@nuxt/image',
+    'motion-v/nuxt',
   ],
   content: {
-    markdown: {
-      anchorLinks: false
-    }
+    renderer: {
+      anchorLinks: false,
+    },
   },
   // ssr: false,
   css: ['~/assets/css/main.css'],
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
+  devServer: {
+    port: 5000,
   },
+  vite: {
+    plugins: [
+      tailwindcss()
+    ]
+  },
+  nitro: {
+    prerender: {
+      failOnError: true,
+    }
+  }
 })

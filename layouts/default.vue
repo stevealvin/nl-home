@@ -6,76 +6,66 @@ const colorMode = useColorMode()
 
 const isCollapsed = computed(() => appStore.siderCollapsed)
 
-const isDark = computed({
-  get () {
-    return colorMode.value === 'dark'
-  },
-  set () {
-    colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
-  }
-})
+const isDark = computed(() => colorMode.value === 'dark')
 
 const currRoute = computed(() => {
   return useRoute().path
 })
 
 const navigation = [
-  { name: '主页', href: '/', icon: 'ph:airplay' },
-  { name: '在线工具', href: '/tools', icon: 'ph:diamonds-four' },
-  { name: '内容', href: '/content', icon: 'ph:notebook' }, 
-  { name: '壁纸', href: '#', icon: 'ph:image' },
+  { name: '主页', href: '/', icon: 'solar:home-2-bold-duotone' },
+  { name: '规则列表', href: '/rules', icon: 'solar:box-minimalistic-bold-duotone' },
+  { name: '内容', href: '/content', icon: 'solar:document-text-bold' }, 
+  { name: '图片', href: '/gallery', icon: 'solar:gallery-minimalistic-bold' },
+  { name: 'TV', href: '/tv', icon: 'solar:video-library-bold-duotone' },
 ]
+
+function handleSwitchColorModele() {
+  document.startViewTransition(() => {
+    colorMode.preference = isDark.value ? 'light' : 'dark'
+  })
+}
+
 </script>
 
 <template>
-  <div class="flex h-screen p-3 gap-3">
-    <div :class="`sider ${isCollapsed ? 'w-40' : 'w-20'}`">
-      <div class="flex-shrink-0 flex gap-2 justify-center">
+  <div class="flex h-screen p-2 gap-3">
+    <div class="flex flex-col" :class="`sider ${isCollapsed ? 'w-40' : 'w-16'}`">
+      <div class="flex-shrink-0 flex gap-2 px-3">
         <img class="h-8 w-8" src="/icon.png" />
-        <span v-show="isCollapsed" :class="`title ease-in ${isCollapsed ? 'opacity-100' : 'opacity-0'}`"">NL</span>
+        <span v-show="isCollapsed" :class="`title ease-in ${isCollapsed ? 'opacity-100' : 'opacity-0'}`">NL</span>
       </div>
-      <div class="flex-1 flex flex-col gap-2 p-4 items-center">
+      <div class="flex-1 mt-20 flex flex-col gap-6 py-4 px-2">
         <template v-for="item in navigation">
-          <UTooltip :text="item.name" :popper="{ placement: 'right' }">
+          <UTooltip :text="item.name" :content="{ side: 'right' }">
             <a :href="item.href" :class="[
-                'rounded-md px-3 py-2 hover:bg-hover',
+                'rounded-md hover:bg-hover w-full',
                 currRoute == item.href ? 'text-[#335eea]' : '',
               ]"
             >
-              <div class="flex items-center gap-1">
-                <UIcon :name="item.icon" class="w-6 h-6" />
-                <span class="truncate">{{ item.name }}</span>
+              <div class="flex justify-start items-center gap-1">
+                <UButton :color="currRoute == item.href ? 'neutral' : 'neutral'" :variant="currRoute == item.href ? 'solid' : 'soft'" size="xl" :icon="item.icon" class="rounded-full"></UButton>
+                <span v-if="isCollapsed" class="truncate">{{ item.name }}</span>
               </div>
             </a>
           </UTooltip>
         </template>
       </div>
       <div class="flex flex-col gap-3 items-center py-4">
-        <UButton
-          :icon="isCollapsed ? 'i-ph-arrow-line-left' : 'i-ph-arrow-line-right'"
-          color="gray"
-          variant="ghost"
-          @click="appStore.changeSiderCollapsed"
-        />
-        <UButton
-          :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
-          color="gray"
-          variant="ghost"
-          @click="isDark = !isDark"
-        />
+        <ClientOnly>
+          <UButton
+            :icon="isDark ? 'solar:moon-bold-duotone' : 'solar:sun-2-bold-duotone'"
+            color="neutral"
+            variant="solid"
+            @click="handleSwitchColorModele"
+             class="relative overflow-hidden"
+          />
+        </ClientOnly>
       </div>
     </div>
     
-    <main class="flex-1 flex flex-col gap-2">
-      <div class="h-14 card flex items-center !px-4">
-        <UButton
-          icon="i-ph-arrow-u-up-left-light"
-          color="gray"
-          variant="ghost"
-          @click="$router.back"
-        />
-      </div>
-      <div class="flex-1 card overflow-auto">
+    <main class="flex-auto h-full">
+      <div class="app-main h-full p-4 rounded-xl overflow-auto">
         <NuxtPage />
       </div>
     </main>
@@ -84,15 +74,20 @@ const navigation = [
 </template>
 
 <style scoped>
-.card {
-  @apply p-3 rounded-lg bg-container
-}
-
 .sider {
-  @apply flex flex-col flex-shrink-0 justify-center card transition-all duration-300
+  transition-duration: 300ms;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .sider .title {
-  @apply ml-2 text-2xl font-bold transition-all
+  margin-left: calc(var(--spacing) * 2) /* 0.5rem = 8px */;
+  font-size: var(--text-2xl) /* 1.5rem = 24px */;
+  line-height: var(--tw-leading, var(--text-2xl--line-height) /* calc(2 / 1.5) ≈ 1.3333 */);
+  font-weight: 700;
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function) /* cubic-bezier(0.4, 0, 0.2, 1) */);
+  transition-duration: var(--tw-duration, var(--default-transition-duration) /* 150ms */);
 }
 </style>

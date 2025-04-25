@@ -1,23 +1,48 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@import "@nuxt/ui";
 
 /* 默认情况下，使用 Light 主题的颜色 */
 :root {
   --text-color: #000;
+  --text-color-1: #000;
+  --text-color-2: #000;
+  --text-color-3: #000;
+  --text-color-4: #000;
+  --text-color-5: #999;
 
-  --body-bg: #f6f6f6;
-  --container-bg: white;
+  --app-bg: #f9f8fd;
+  --main-bg: white;
   --hover-bg: rgba(0, 0, 0, 0.06);
 }
 
 /* 如果用户启用 Dark 主题，则覆盖这些变量 */
 html.dark {
   --text-color: #fff;
+  --text-color-1: #000;
+  --text-color-2: #000;
+  --text-color-3: #000;
+  --text-color-4: #000;
+  --text-color-5: #dedede;
 
-  --body-bg: #101014;
-  --container-bg: rgba(225, 235, 255, 0.07);
+  /* --app-bg: #101014;
+  --main-bg: rgba(225, 235, 255, 0.07); */
   --hover-bg: rgba(255, 255, 255, 0.07);
+
+  --app-bg: radial-gradient(circle at right center, #4b296980, #526c7f 25%, #a49e99 50%, #658292);
+  --main-bg: rgba(255, 255, 255, 0.15);
+}
+
+.app-ui {
+  background: var(--app-bg);
+  color: var(--text-color);
+  /* transition: background-color 0.5s ease-in-out; */
+  transition: background-color 0.5s, color 0.5;
+}
+.app-ui .app-main {
+  background: var(--main-bg);
+  backdrop-filter: blur(64px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 *, :after, :before {

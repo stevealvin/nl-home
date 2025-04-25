@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { website } from '@/db/data/site'
+import { website } from '~/assets/json/site'
 
 const menus = [
   {
